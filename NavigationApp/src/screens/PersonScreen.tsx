@@ -15,7 +15,7 @@ export const PersonScreen = ({route, navigation}: Props) => {
     });
   });
   return (
-    <View>
+    <View style={styles.personInfoContainer}>
       <Text style={styles.title}>Person Screen</Text>
       <Text>{params.name}</Text>
       <Text>{params.age}</Text>

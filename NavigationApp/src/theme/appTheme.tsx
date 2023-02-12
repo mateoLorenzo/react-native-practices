@@ -10,4 +10,8 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     fontWeight: 'bold',
   },
+  personInfoContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
 });
