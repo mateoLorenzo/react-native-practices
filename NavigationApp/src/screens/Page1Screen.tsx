@@ -13,10 +13,7 @@ export const Page1Screen = (props: Props) => {
         title="Navigate to Page 2"
         onPress={() => props.navigation.navigate('Page2Screen')}
       />
-      <Text style={{textAlign: 'center', marginTop: 100}}>
-        {' '}
-        Navigate with arguments
-      </Text>
+      <Text style={styles.page1ScreenSubtitle}>Navigate with arguments</Text>
       <Button
         title="MatuMoto"
         onPress={() =>

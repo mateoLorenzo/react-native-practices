@@ -10,6 +10,10 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     fontWeight: 'bold',
   },
+  page1ScreenSubtitle: {
+    textAlign: 'center',
+    marginTop: 100,
+  },
   personInfoContainer: {
     marginTop: 20,
     alignItems: 'center',
