@@ -18,4 +18,11 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'center',
   },
+  avatar: {
+    width: 150,
+    height: 150,
+    borderRadius: 100,
+    alignSelf: 'center',
+    marginTop: 20,
+  },
 });
