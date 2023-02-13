@@ -1,10 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
+import {styles} from '../theme/appTheme';
 
 export const SettingsScreen = () => {
   return (
-    <View>
-      <Text>Settings Screen!!</Text>
-    </View>
+    <SafeAreaView>
+      <Text style={{...styles.title}}>Settings Screen!!</Text>
+      <Text style={{alignSelf: 'center'}}>This is my settings screen</Text>
+    </SafeAreaView>
   );
 };
