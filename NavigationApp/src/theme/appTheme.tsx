@@ -25,4 +25,14 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 20,
   },
+  menuContainer: {
+    marginVertical: 30,
+    marginHorizontal: 30,
+  },
+  menuButton: {
+    marginVertical: 10,
+  },
+  menuText: {
+    fontSize: 20,
+  },
 });
