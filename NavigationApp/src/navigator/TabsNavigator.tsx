@@ -5,6 +5,7 @@ import {Tab2Screen} from '../screens/Tab2Screen';
 import {Tab3Screen} from '../screens/Tab3Screen';
 import {StackNavigator} from './StackNavigator';
 import {colors} from '../theme/appTheme';
+import {Text} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +23,10 @@ export const TabsNavigator = () => {
       }}>
       <Tab.Screen
         name="Tab1Screen"
-        options={{title: 'Tab 1'}}
+        options={{
+          title: 'Tab 1',
+          tabBarIcon: props => <Text style={{color: props.color}}>T1</Text>,
+        }}
         component={Tab1Screen}
       />
       <Tab.Screen
