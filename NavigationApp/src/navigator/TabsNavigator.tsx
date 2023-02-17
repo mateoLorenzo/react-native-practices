@@ -16,6 +16,9 @@ export const TabsNavigator = () => {
         tabBarStyle: {
           borderTopWidth: 0,
         },
+        tabBarLabelStyle: {
+          fontSize: 15,
+        },
       }}>
       <Tab.Screen
         name="Tab1Screen"
