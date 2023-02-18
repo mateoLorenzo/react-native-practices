@@ -128,7 +128,7 @@ const IosTabsNavigator = () => {
       />
       <BottomTabIos.Screen
         name="Tab3Screen"
-        options={{title: 'Tab 3'}}
+        options={{title: 'Tab 3', headerShown: false}}
         component={TopTabNavigator}
       />
       <BottomTabIos.Screen

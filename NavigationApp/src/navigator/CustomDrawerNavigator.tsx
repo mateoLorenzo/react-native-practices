@@ -26,7 +26,11 @@ export const CustomDrawerNavigator = () => {
         drawerType: width >= 768 ? 'permanent' : 'front',
       }}
       drawerContent={props => <DrawerMenu {...props} />}>
-      <Drawer.Screen name="TabsNavigator" component={TabsNavigator} />
+      <Drawer.Screen
+        name="TabsNavigator"
+        options={{headerShown: false}}
+        component={TabsNavigator}
+      />
       <Drawer.Screen
         name="SettingsScreen"
         options={{headerShown: false}}
