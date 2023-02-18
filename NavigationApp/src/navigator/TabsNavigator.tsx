@@ -20,12 +20,12 @@ export const TabsNavigator = () => {
         tabBarLabelStyle: {
           fontSize: 15,
         },
+        tabBarIcon: () => <Text>T2</Text>,
       }}>
       <Tab.Screen
         name="Tab1Screen"
         options={{
           title: 'Tab 1',
-          tabBarIcon: props => <Text style={{color: props.color}}>T1</Text>,
         }}
         component={Tab1Screen}
       />
