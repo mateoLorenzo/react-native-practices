@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 export const TabsNavigator = () => {
   return (
     <Tab.Navigator
-      screenOptions={{
+      screenOptions={({route}) => ({
         tabBarActiveTintColor: colors.primary,
         tabBarStyle: {
           borderTopWidth: 0,
@@ -20,8 +20,27 @@ export const TabsNavigator = () => {
         tabBarLabelStyle: {
           fontSize: 15,
         },
-        tabBarIcon: () => <Text>T2</Text>,
-      }}>
+        tabBarIcon: () => {
+          let iconName: string = '';
+
+          switch (route.name) {
+            case 'Tab1Screen':
+              iconName = 'T1';
+              break;
+            case 'Tab2Screen':
+              iconName = 'T2';
+              break;
+            case 'Tab3Screen':
+              iconName = 'T3';
+              break;
+            case 'StackNavigator':
+              iconName = 'Stack';
+              break;
+          }
+
+          return <Text>{iconName}</Text>;
+        },
+      })}>
       <Tab.Screen
         name="Tab1Screen"
         options={{
