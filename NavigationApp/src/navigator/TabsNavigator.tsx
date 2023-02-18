@@ -21,6 +21,8 @@ const BottomTabAndroid = createMaterialBottomTabNavigator();
 const AndroidTabsNavigator = () => {
   return (
     <BottomTabAndroid.Navigator
+      activeColor="white"
+      inactiveColor="gray"
       sceneAnimationEnabled={true}
       barStyle={{
         backgroundColor: colors.primary,
