@@ -1,13 +1,13 @@
 import React, {createContext} from 'react';
 
-// Definir como luce mi context y que informacion voy a tener aqui
+// Definir como luce mi context y que informacion voy a tener en el context
 export interface AuthState {
   isLoggedIn: boolean;
   userName?: string;
   favoriteIcon?: string;
 }
 
-// Estado inicial
+// Estado inicial del context
 export const authInitialState: AuthState = {
   isLoggedIn: false,
   userName: undefined,
