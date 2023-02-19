@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
   menuText: {
     fontSize: 20,
     marginLeft: 20,
+    color: 'black',
   },
   iconsContainer: {
     flexDirection: 'row',

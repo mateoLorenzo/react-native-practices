@@ -18,7 +18,8 @@ export const TopTabNavigator = () => {
       style={{paddingTop: top}}
       sceneContainerStyle={{backgroundColor: 'white'}}
       screenOptions={({route}) => ({
-        tabBarPressColor: 'red', //Only works for android
+        // tabBarPressColor: 'blue', //Only works for android
+        tabBarPressColor: colors.primary, //Only works for android
         tabBarShowIcon: true,
         tabBarIndicatorStyle: {
           backgroundColor: colors.primary,
@@ -41,7 +42,7 @@ export const TopTabNavigator = () => {
               break;
           }
 
-          return <Icon name={iconName} size={25} />;
+          return <Icon color="black" name={iconName} size={25} />;
         },
       })}>
       <Tab.Screen name="Chat" component={ChatScreen} />

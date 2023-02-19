@@ -61,14 +61,14 @@ const DrawerMenu = ({navigation}: DrawerContentComponentProps) => {
         <TouchableOpacity
           style={styles.menuButton}
           onPress={() => navigation.navigate('StackNavigator')}>
-          <Icon name="logo-stackoverflow" size={25} />
+          <Icon color="black" name="logo-stackoverflow" size={25} />
           <Text style={styles.menuText}>Navigation stack</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.menuButton}
           onPress={() => navigation.navigate('SettingsScreen')}>
-          <Icon name="settings-outline" size={25} />
+          <Icon color="black" name="settings-outline" size={25} />
           <Text style={styles.menuText}>Settings</Text>
         </TouchableOpacity>
       </View>

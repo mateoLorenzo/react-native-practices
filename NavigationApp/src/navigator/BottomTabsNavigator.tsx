@@ -54,7 +54,7 @@ const AndroidTabsNavigator = () => {
               break;
           }
 
-          return <Icon name={iconName} size={30} />;
+          return <Icon color="black" name={iconName} size={30} />;
         },
       })}>
       <BottomTabIos.Screen
