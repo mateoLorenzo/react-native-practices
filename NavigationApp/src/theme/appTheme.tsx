@@ -40,4 +40,12 @@ export const styles = StyleSheet.create({
   menuText: {
     fontSize: 20,
   },
+  iconsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  icon: {
+    marginHorizontal: 20,
+    marginVertical: 20,
+  },
 });
