@@ -3,9 +3,10 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {ChatScreen} from '../screens/ChatScreen';
 import {ContactsScreen} from '../screens/ContactsScreen';
 import {AlbumsScreen} from '../screens/AlbumsScreen';
-import {LogBox, Text} from 'react-native';
+import {LogBox} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {colors} from '../theme/appTheme';
+import Icon from 'react-native-vector-icons/Ionicons';
 LogBox.ignoreLogs(['Sending']);
 
 const Tab = createMaterialTopTabNavigator();
@@ -25,25 +26,22 @@ export const TopTabNavigator = () => {
         tabBarStyle: {
           shadowColor: 'transparent',
         },
-        tabBarIcon: ({color}) => {
+        tabBarIcon: ({focused}) => {
           let iconName: string = '';
 
           switch (route.name) {
             case 'Chat':
-              iconName = 'Ch';
+              iconName = focused ? 'chatbox' : 'chatbox-outline';
               break;
             case 'Contacts':
-              iconName = 'Co';
-              break;
-            case 'Tab3Screen':
-              iconName = 'T3';
+              iconName = focused ? 'skull' : 'skull-outline';
               break;
             case 'Albums':
-              iconName = 'Al';
+              iconName = focused ? 'star' : 'star-outline';
               break;
           }
 
-          return <Text style={{color}}>{iconName}</Text>;
+          return <Icon name={iconName} size={25} />;
         },
       })}>
       <Tab.Screen name="Chat" component={ChatScreen} />

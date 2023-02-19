@@ -13,7 +13,7 @@ import {
   View,
 } from 'react-native';
 import {styles} from '../theme/appTheme';
-import {TabsNavigator} from './TabsNavigator';
+import {BottomTabsNavigator} from './BottomTabsNavigator';
 
 const Drawer = createDrawerNavigator();
 
@@ -29,7 +29,7 @@ export const CustomDrawerNavigator = () => {
       <Drawer.Screen
         name="TabsNavigator"
         options={{headerShown: false}}
-        component={TabsNavigator}
+        component={BottomTabsNavigator}
       />
       <Drawer.Screen
         name="SettingsScreen"

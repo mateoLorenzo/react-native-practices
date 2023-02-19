@@ -4,11 +4,12 @@ import {Tab1Screen} from '../screens/Tab1Screen';
 import {Tab2Screen} from '../screens/Tab2Screen';
 import {StackNavigator} from './StackNavigator';
 import {colors} from '../theme/appTheme';
-import {Platform, Text} from 'react-native';
+import {Platform} from 'react-native';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {TopTabNavigator} from './TopTabNavigator';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export const TabsNavigator = () => {
+export const BottomTabsNavigator = () => {
   return Platform.OS === 'ios' ? (
     <IosTabsNavigator />
   ) : (
@@ -35,25 +36,25 @@ const AndroidTabsNavigator = () => {
         tabBarLabelStyle: {
           fontSize: 15,
         },
-        tabBarIcon: () => {
+        tabBarIcon: ({focused}) => {
           let iconName: string = '';
 
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1!';
+              iconName = focused ? 'home' : 'home-outline';
               break;
             case 'Tab2Screen':
-              iconName = 'T2';
+              iconName = focused ? 'planet' : 'planet-outline';
               break;
             case 'Tab3Screen':
-              iconName = 'T3';
+              iconName = focused ? 'barbell' : 'barbell-outline';
               break;
             case 'StackNavigator':
-              iconName = 'St';
+              iconName = 'logo-stackoverflow';
               break;
           }
 
-          return <Text>{iconName}</Text>;
+          return <Icon name={iconName} size={30} />;
         },
       })}>
       <BottomTabIos.Screen
@@ -93,32 +94,30 @@ const IosTabsNavigator = () => {
         tabBarLabelStyle: {
           fontSize: 15,
         },
-        tabBarIcon: () => {
+        tabBarIcon: ({focused}) => {
           let iconName: string = '';
 
           switch (route.name) {
             case 'Tab1Screen':
-              iconName = 'T1';
+              iconName = focused ? 'home' : 'home-outline';
               break;
             case 'Tab2Screen':
-              iconName = 'T2';
+              iconName = focused ? 'planet' : 'planet-outline';
               break;
             case 'Tab3Screen':
-              iconName = 'T3';
+              iconName = focused ? 'barbell' : 'barbell-outline';
               break;
             case 'StackNavigator':
-              iconName = 'Stack';
+              iconName = 'logo-stackoverflow';
               break;
           }
 
-          return <Text>{iconName}</Text>;
+          return <Icon name={iconName} size={30} />;
         },
       })}>
       <BottomTabIos.Screen
         name="Tab1Screen"
-        options={{
-          title: 'Tab 1',
-        }}
+        options={{title: 'Tab 1'}}
         component={Tab1Screen}
       />
       <BottomTabIos.Screen
@@ -133,7 +132,7 @@ const IosTabsNavigator = () => {
       />
       <BottomTabIos.Screen
         name="StackNavigator"
-        options={{title: 'Stack Screen!'}}
+        options={{title: 'Stack Screen!', headerShown: false}}
         component={StackNavigator}
       />
     </BottomTabIos.Navigator>

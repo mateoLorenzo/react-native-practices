@@ -2,6 +2,7 @@ import {DrawerScreenProps} from '@react-navigation/drawer';
 import React, {useEffect} from 'react';
 import {Button, Text, View} from 'react-native';
 import {styles} from '../theme/appTheme';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 interface Props extends DrawerScreenProps<any, any> {}
 
@@ -9,7 +10,12 @@ export const Page1Screen = ({navigation}: Props) => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <Button title="Menu" onPress={() => navigation.toggleDrawer()} />
+        <Icon
+          name="menu-outline"
+          onPress={() => navigation.toggleDrawer()}
+          style={{marginLeft: 30}}
+          size={30}
+        />
       ),
     });
   });

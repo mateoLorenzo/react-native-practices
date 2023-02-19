@@ -21,24 +21,20 @@ export const StackNavigator = () => {
         cardStyle: {
           backgroundColor: 'white',
         },
-        headerStyle: {
-          elevation: 0,
-          shadowColor: 'transparent',
-        },
       }}>
       <Stack.Screen
         name="Page1Screen"
-        options={{title: 'Pagina 1'}}
+        options={{title: 'Page 1'}}
         component={Page1Screen}
       />
       <Stack.Screen
         name="Page2Screen"
-        options={{title: 'Pagina 2'}}
+        options={{title: 'Page 2'}}
         component={Page2Screen}
       />
       <Stack.Screen
         name="Page3Screen"
-        options={{title: 'Pagina 3', headerBackTitle: 'Back'}}
+        options={{title: 'Page 3', headerBackTitle: 'Back'}}
         component={Page3Screen}
       />
       <Stack.Screen
