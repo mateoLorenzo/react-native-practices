@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     marginBottom: 10,
     fontWeight: 'bold',
+    color: 'black',
   },
   page1ScreenSubtitle: {
     textAlign: 'center',
