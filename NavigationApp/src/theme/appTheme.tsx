@@ -36,9 +36,11 @@ export const styles = StyleSheet.create({
   },
   menuButton: {
     marginVertical: 10,
+    flexDirection: 'row',
   },
   menuText: {
     fontSize: 20,
+    marginLeft: 20,
   },
   iconsContainer: {
     flexDirection: 'row',
