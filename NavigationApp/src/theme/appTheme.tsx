@@ -43,9 +43,21 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
     color: 'black',
   },
+  iconScreenTitle: {
+    fontSize: 30,
+    alignSelf: 'center',
+    marginBottom: 10,
+    fontWeight: 'bold',
+    color: 'black',
+    marginTop: 20,
+  },
   iconsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+  },
+  iconContainer: {
+    backgroundColor: 'lightgrey',
+    borderRadius: 100,
   },
   icon: {
     marginHorizontal: 20,
