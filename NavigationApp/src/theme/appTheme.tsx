@@ -50,5 +50,6 @@ export const styles = StyleSheet.create({
   icon: {
     marginHorizontal: 20,
     marginVertical: 20,
+    color: 'black',
   },
 });
