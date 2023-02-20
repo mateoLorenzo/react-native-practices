@@ -1,23 +1,20 @@
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {AuthContext} from '../context/AuthContext';
 import {styles} from '../theme/appTheme';
 
 interface Props {
   iconName: string;
-  iconSelected: string;
-  setIconSelected: Dispatch<SetStateAction<string>>;
 }
 
-export const TouchableIcon = ({
-  iconName,
-  iconSelected,
-  setIconSelected,
-}: Props) => {
+export const TouchableIcon = ({iconName}: Props) => {
+  const {authState, changeFavoriteIcon} = useContext(AuthContext);
+  const {favoriteIcon} = authState;
   return (
     <TouchableOpacity
-      style={iconSelected === iconName ? styles.iconContainer : {}}
-      onPress={() => setIconSelected(iconName)}>
+      style={favoriteIcon === iconName ? styles.iconContainer : {}}
+      onPress={() => changeFavoriteIcon(iconName)}>
       <Icon style={styles.icon} name={iconName} size={30} />
     </TouchableOpacity>
   );
