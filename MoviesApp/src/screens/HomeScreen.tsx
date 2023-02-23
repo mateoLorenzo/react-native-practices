@@ -22,7 +22,7 @@ export const HomeScreen = () => {
 
   if (isLoading) {
     return (
-      <View style={{flex: 1, justifyContent: 'center'}}>
+      <View style={styles.loaderContainer}>
         <ActivityIndicator color="red" size={20} />
       </View>
     );
@@ -45,6 +45,10 @@ export const HomeScreen = () => {
 };
 
 const styles = StyleSheet.create({
+  loaderContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
   mainCarouselContainer: {
     height: 440,
   },
