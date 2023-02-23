@@ -1,16 +1,10 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  Dimensions,
-  FlatList,
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
+import {ActivityIndicator, Dimensions, ScrollView, View} from 'react-native';
 import {MovieCard} from '../components/MovieCard';
 import {useMovies} from '../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {HorizontalSlider} from '../components/HorizontalSlider';
 
 // interface Props extends StackScreenProps<any, any> {}
 
@@ -39,20 +33,8 @@ export const HomeScreen = () => {
             itemWidth={300}
           />
         </View>
-        <View style={{backgroundColor: 'red', height: 230}}>
-          <Text style={{fontSize: 30, fontWeight: 'bold', alignSelf: 'center'}}>
-            En Cine
-          </Text>
-          <FlatList
-            data={moviesList}
-            renderItem={({item}: any) => (
-              <MovieCard movie={item} height={200} width={140} />
-            )}
-            keyExtractor={item => item.id.toString()}
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}
-          />
-        </View>
+        <HorizontalSlider title="En Cines" moviesList={moviesList} />
+        <HorizontalSlider moviesList={moviesList} />
       </View>
     </ScrollView>
   );
