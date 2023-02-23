@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import {Movie} from '../interfaces/movieInterface';
 import {MovieCard} from './MovieCard';
 
@@ -11,11 +11,7 @@ interface Props {
 export const HorizontalSlider = ({moviesList, title}: Props) => {
   return (
     <View style={{height: title ? 260 : 230}}>
-      {title ? (
-        <Text style={{fontSize: 30, fontWeight: 'bold', marginLeft: 10}}>
-          {title}
-        </Text>
-      ) : null}
+      {title ? <Text style={styles.sliderTitle}>{title}</Text> : null}
       <FlatList
         data={moviesList}
         renderItem={({item}: any) => (
@@ -28,3 +24,11 @@ export const HorizontalSlider = ({moviesList, title}: Props) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  sliderTitle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginLeft: 10,
+  },
+});
