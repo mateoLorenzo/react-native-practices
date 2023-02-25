@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {RootStackParams} from '../navigators/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {useMovieDetails} from '../hooks/useMovieDetails';
 
 const screenHeight = Dimensions.get('screen').height;
 interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> {}
@@ -17,6 +18,8 @@ interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> {}
 export const DetailScreen = ({route}: Props) => {
   const movie = route.params;
   const uri = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+  console.log('movie.id', movie.id);
+  useMovieDetails(movie.id);
 
   return (
     <ScrollView>
