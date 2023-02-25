@@ -4,16 +4,16 @@ import {Movie, MovieDBMoviesResponse} from '../interfaces/movieInterface';
 
 export const useMovies = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [nowPlayingMovies, setMoviesList] = useState<Movie[]>([]);
-  const [popularMoviesList, setPopularMoviesList] = useState<Movie[]>([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState<Movie[]>([]);
+  const [popularMovies, setPopularMovies] = useState<Movie[]>([]);
 
   const getMovies = async () => {
     const resNowPlaying = await movieDB.get<MovieDBMoviesResponse>(
       '/now_playing',
     );
     const resPopular = await movieDB.get<MovieDBMoviesResponse>('/popular');
-    setMoviesList(resNowPlaying.data.results);
-    setPopularMoviesList(resPopular.data.results);
+    setNowPlayingMovies(resNowPlaying.data.results);
+    setPopularMovies(resPopular.data.results);
     setIsLoading(false);
   };
 
@@ -24,7 +24,7 @@ export const useMovies = () => {
 
   return {
     nowPlayingMovies,
-    popularMoviesList,
+    popularMovies,
     isLoading,
   };
 };
