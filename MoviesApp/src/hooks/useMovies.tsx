@@ -4,7 +4,7 @@ import {Movie, MovieDBMoviesResponse} from '../interfaces/movieInterface';
 
 export const useMovies = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [moviesList, setMoviesList] = useState<Movie[]>([]);
+  const [nowPlayingMovies, setMoviesList] = useState<Movie[]>([]);
   const [popularMoviesList, setPopularMoviesList] = useState<Movie[]>([]);
 
   const getMovies = async () => {
@@ -23,7 +23,7 @@ export const useMovies = () => {
   }, []);
 
   return {
-    moviesList,
+    nowPlayingMovies,
     popularMoviesList,
     isLoading,
   };

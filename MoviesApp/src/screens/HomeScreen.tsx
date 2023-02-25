@@ -16,7 +16,7 @@ const {width: windowWidth} = Dimensions.get('window');
 
 export const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
-  const {moviesList, popularMoviesList, isLoading} = useMovies();
+  const {nowPlayingMovies, popularMoviesList, isLoading} = useMovies();
 
   if (isLoading) {
     return (
@@ -30,7 +30,7 @@ export const HomeScreen = () => {
       <View style={styles.mainCarouselContainer}>
         <Carousel
           vertical={false}
-          data={moviesList}
+          data={nowPlayingMovies}
           renderItem={({item}: any) => <MovieCard movie={item} />}
           sliderWidth={windowWidth}
           itemWidth={300}
