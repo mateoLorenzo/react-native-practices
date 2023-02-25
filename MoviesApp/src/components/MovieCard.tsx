@@ -18,7 +18,13 @@ export const MovieCard = ({movie, height = 420, width = 300}: Props) => {
       onPress={() =>
         navigation.navigate('DetailScreen' as never, movie as never)
       }
-      style={{height, width, marginHorizontal: 8}}>
+      style={{
+        height,
+        width,
+        marginHorizontal: 2,
+        paddingBottom: 20,
+        paddingHorizontal: 7,
+      }}>
       <View style={styles.imageContainer}>
         <Image style={styles.image} source={{uri}} />
       </View>
@@ -29,7 +35,6 @@ export const MovieCard = ({movie, height = 420, width = 300}: Props) => {
 const styles = StyleSheet.create({
   imageContainer: {
     borderRadius: 20,
-
     flex: 1,
     shadowColor: '#000',
     shadowOffset: {
