@@ -16,7 +16,7 @@ const {width: windowWidth} = Dimensions.get('window');
 
 export const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
-  const {nowPlayingMovies, popularMovies, isLoading} = useMovies();
+  const {nowPlaying, popular, topRated, upcoming, isLoading} = useMovies();
 
   if (isLoading) {
     return (
@@ -30,13 +30,15 @@ export const HomeScreen = () => {
       <View style={styles.mainCarouselContainer}>
         <Carousel
           vertical={false}
-          data={nowPlayingMovies}
+          data={nowPlaying}
           renderItem={({item}: any) => <MovieCard movie={item} />}
           sliderWidth={windowWidth}
           itemWidth={300}
         />
       </View>
-      <HorizontalSlider title="Populares" moviesList={popularMovies} />
+      <HorizontalSlider title="Popular" moviesList={popular} />
+      <HorizontalSlider title="Top Rated" moviesList={topRated} />
+      <HorizontalSlider title="Upcoming" moviesList={upcoming} />
     </ScrollView>
   );
 };
