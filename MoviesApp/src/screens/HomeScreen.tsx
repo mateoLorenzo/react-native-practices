@@ -12,13 +12,11 @@ import Carousel from 'react-native-snap-carousel';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {HorizontalSlider} from '../components/HorizontalSlider';
 
-// interface Props extends StackScreenProps<any, any> {}
-
 const {width: windowWidth} = Dimensions.get('window');
 
 export const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
-  const {moviesList, isLoading} = useMovies();
+  const {moviesList, popularMoviesList, isLoading} = useMovies();
 
   if (isLoading) {
     return (
@@ -38,8 +36,7 @@ export const HomeScreen = () => {
           itemWidth={300}
         />
       </View>
-      <HorizontalSlider title="En Cines" moviesList={moviesList} />
-      <HorizontalSlider moviesList={moviesList} />
+      <HorizontalSlider title="Populares" moviesList={popularMoviesList} />
     </ScrollView>
   );
 };
