@@ -1,25 +1,43 @@
 import {useEffect, useState} from 'react';
 import movieDB from '../api/movieDB';
+import {CreditsResponse} from '../interfaces/creditsInterface';
 import {MovieFull} from '../interfaces/movieInterface';
 
 interface MovieDetails {
   isLoading: boolean;
-  movieFull: MovieFull;
+  movieFull?: MovieFull;
   cast: any[];
 }
 
-export const useMovieDetails = (movieId: number) => {
+export const useMovieDetails = (movieId: number): MovieDetails => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [state, setState] = useState<MovieDetails>();
+  const [state, setState] = useState<MovieDetails>({
+    isLoading: true,
+    movieFull: undefined,
+    cast: [],
+  });
 
   const getMovieDetails = async () => {
-    const response = await movieDB.get<MovieFull>(`/${movieId}`);
-    console.log('resp.data', response.data.overview);
+    const movieDetailsPromise = await movieDB.get<MovieFull>(`/${movieId}`);
+    const castPromise = await movieDB.get<CreditsResponse>(
+      `/${movieId}/credits`,
+    );
+
+    const [movieDetailsResponse, castPromiseResponse] = await Promise.all([
+      movieDetailsPromise,
+      castPromise,
+    ]);
+
+    setState({
+      isLoading: false,
+      movieFull: movieDetailsResponse.data,
+      cast: castPromiseResponse.data.cast,
+    });
   };
 
   useEffect(() => {
     getMovieDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return {state};
+  return {...state};
 };
