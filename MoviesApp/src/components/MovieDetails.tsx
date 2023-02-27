@@ -3,13 +3,14 @@ import {Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Cast} from '../interfaces/creditsInterface';
 import {MovieFull} from '../interfaces/movieInterface';
+import {CastItem} from './CastItem';
 
 interface Props {
   movieFull: MovieFull;
   cast: Cast[];
 }
 
-export const MovieDetails = ({movieFull}: Props) => {
+export const MovieDetails = ({movieFull, cast}: Props) => {
   console.log('movieFull.genres', movieFull.genres);
   return (
     <>
@@ -42,6 +43,20 @@ export const MovieDetails = ({movieFull}: Props) => {
       </View>
 
       {/* Casting */}
+      <View style={{marginTop: 10, marginBottom: 100}}>
+        <Text
+          style={{
+            fontSize: 23,
+            marginTop: 10,
+            fontWeight: 'bold',
+            marginHorizontal: 20,
+          }}>
+          Actores
+        </Text>
+        {cast.map(actor => (
+          <CastItem actor={actor} />
+        ))}
+      </View>
     </>
   );
 };
