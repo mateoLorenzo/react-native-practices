@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Cast} from '../interfaces/creditsInterface';
 import {MovieFull} from '../interfaces/movieInterface';
@@ -15,26 +15,22 @@ export const MovieDetails = ({movieFull, cast}: Props) => {
   return (
     <>
       {/* Details */}
-      <View style={{marginHorizontal: 20}}>
-        <View style={{flexDirection: 'row'}}>
+      <View style={styles.detailsContainer}>
+        <View style={styles.movieRateContainer}>
           <Icon name="star-outline" color="grey" size={16} />
-          <Text>{movieFull.vote_average}</Text>
-          <Text style={{marginLeft: 5}}>
+          <Text style={styles.movieRate}>{movieFull.vote_average}</Text>
+          <Text style={styles.movieGenres}>
             - {movieFull.genres.map(genre => genre.name).join(', ')}
           </Text>
         </View>
 
         {/* story */}
-        <Text style={{fontSize: 23, marginTop: 10, fontWeight: 'bold'}}>
-          Historia
-        </Text>
-        <Text style={{fontSize: 16}}>{movieFull.overview}</Text>
+        <Text style={styles.storyTitle}>Historia</Text>
+        <Text style={styles.movieOverview}>{movieFull.overview}</Text>
 
         {/* Budget */}
-        <Text style={{fontSize: 23, marginTop: 10, fontWeight: 'bold'}}>
-          Presupuesto
-        </Text>
-        <Text style={{fontSize: 18}}>
+        <Text style={styles.budgetTitle}>Presupuesto</Text>
+        <Text style={styles.movieBudget}>
           {movieFull.budget.toLocaleString('en-US', {
             style: 'currency',
             currency: 'USD',
@@ -43,25 +39,68 @@ export const MovieDetails = ({movieFull, cast}: Props) => {
       </View>
 
       {/* Casting */}
-      <View style={{marginTop: 10, marginBottom: 100}}>
-        <Text
-          style={{
-            fontSize: 23,
-            marginTop: 10,
-            fontWeight: 'bold',
-            marginHorizontal: 20,
-          }}>
-          Actores
-        </Text>
+      <View style={styles.castContainer}>
+        <Text style={styles.castTitle}>Actores</Text>
         <FlatList
           data={cast}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => <CastItem actor={item} />}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          style={{marginTop: 10, height: 70}}
+          style={styles.castCardsContainer}
         />
       </View>
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  detailsContainer: {
+    marginHorizontal: 20,
+  },
+  movieRateContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  movieRate: {
+    marginLeft: 5,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  movieGenres: {
+    marginLeft: 5,
+    fontSize: 16,
+  },
+  storyTitle: {
+    fontSize: 23,
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
+  movieOverview: {
+    fontSize: 16,
+    textAlign: 'justify',
+  },
+  budgetTitle: {
+    fontSize: 23,
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
+  movieBudget: {
+    fontSize: 16,
+  },
+  castContainer: {
+    marginTop: 10,
+    marginBottom: 100,
+  },
+  castTitle: {
+    fontSize: 23,
+    marginTop: 10,
+    fontWeight: 'bold',
+    marginHorizontal: 20,
+  },
+  castCardsContainer: {
+    marginTop: 10,
+    height: 70,
+  },
+});
