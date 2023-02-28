@@ -82,10 +82,12 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 16,
     opacity: 0.8,
+    color: 'black',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'black',
   },
   backButtonContainer: {
     position: 'absolute',

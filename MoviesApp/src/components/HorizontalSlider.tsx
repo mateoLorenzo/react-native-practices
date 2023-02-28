@@ -30,5 +30,6 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: 'bold',
     marginLeft: 10,
+    color: 'black',
   },
 });

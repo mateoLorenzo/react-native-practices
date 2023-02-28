@@ -67,27 +67,33 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     fontSize: 16,
     fontWeight: 'bold',
+    color: 'grey',
   },
   movieGenres: {
     marginLeft: 5,
     fontSize: 16,
+    color: 'grey',
   },
   storyTitle: {
     fontSize: 23,
     marginTop: 10,
     fontWeight: 'bold',
+    color: 'black',
   },
   movieOverview: {
     fontSize: 16,
     textAlign: 'justify',
+    color: 'black',
   },
   budgetTitle: {
     fontSize: 23,
     marginTop: 10,
     fontWeight: 'bold',
+    color: 'black',
   },
   movieBudget: {
     fontSize: 16,
+    color: 'grey',
   },
   castContainer: {
     marginTop: 10,
@@ -98,6 +104,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontWeight: 'bold',
     marginHorizontal: 20,
+    color: 'black',
   },
   castCardsContainer: {
     marginTop: 10,

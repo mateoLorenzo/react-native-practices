@@ -49,9 +49,11 @@ const styles = StyleSheet.create({
   actorName: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: 'black',
   },
   actorCharacter: {
     fontSize: 16,
     opacity: 0.7,
+    color: 'black',
   },
 });
