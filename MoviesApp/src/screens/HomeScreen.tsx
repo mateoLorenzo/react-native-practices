@@ -23,6 +23,7 @@ export const HomeScreen = () => {
   const getPosterColors = async (index: number) => {
     const movie = nowPlaying[index];
     const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    console.log({uri});
 
     const [primary, secondary] = await getImageColors(uri);
     console.log({primary, secondary});
