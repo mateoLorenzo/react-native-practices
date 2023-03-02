@@ -11,7 +11,6 @@ interface Props {
 }
 
 export const MovieDetails = ({movieFull, cast}: Props) => {
-  console.log('movieFull.genres', movieFull.genres);
   return (
     <>
       {/* Details */}
