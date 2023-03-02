@@ -1,4 +1,5 @@
-import React, {useContext} from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, {useContext, useEffect} from 'react';
 import {
   ActivityIndicator,
   Dimensions,
@@ -25,9 +26,16 @@ export const HomeScreen = () => {
   const getPosterColors = async (index: number) => {
     const movie = nowPlaying[index];
     const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+
     const [primary = 'green', secondary = 'orange'] = await getImageColors(uri);
     setMainColors({primary, secondary});
   };
+
+  useEffect(() => {
+    if (nowPlaying.length > 0) {
+      getPosterColors(0);
+    }
+  }, [nowPlaying]);
 
   if (isLoading) {
     return (
