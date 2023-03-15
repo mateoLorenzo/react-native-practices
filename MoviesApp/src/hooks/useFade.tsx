@@ -9,13 +9,13 @@ export const useFade = () => {
       toValue: 1,
       duration: 1000,
       useNativeDriver: true,
-    }).start((callback && callback()) || null);
+    }).start(() => (callback ? callback() : null));
   };
 
-  const fadeOut = () => {
+  const fadeOut = (duration = 300) => {
     Animated.timing(opacity, {
       toValue: 0,
-      duration: 1000,
+      duration,
       useNativeDriver: true,
     }).start();
   };
