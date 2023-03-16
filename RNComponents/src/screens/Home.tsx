@@ -1,12 +1,36 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import {FlatList, StyleSheet, Text, View} from 'react-native';
+
+interface MenuItem {
+  name: string;
+  icon: string;
+  component: string;
+}
+
+const menuItems = [
+  {
+    name: 'Animation 101',
+    icon: 'cube-outline',
+    component: 'Animation101Screen',
+  },
+];
 
 const Home = () => {
+  const renderMenuItem = (menuItem: MenuItem) => (
+    <View>
+      <Text>
+        {menuItem.name} - {menuItem.icon}
+      </Text>
+    </View>
+  );
+
   return (
     <View style={styles.container}>
-      <Icon name="home-outline" size={30} />
-      <Text style={styles.text}>Home</Text>
+      <FlatList
+        data={menuItems}
+        renderItem={({item}) => renderMenuItem(item)}
+        keyExtractor={item => item.name}
+      />
     </View>
   );
 };
@@ -16,8 +40,6 @@ export default Home;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   text: {
     fontSize: 30,
