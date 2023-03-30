@@ -1,5 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {styles} from '../theme/appTheme';
 
 interface MenuItem {
   name: string;
@@ -13,9 +16,15 @@ const menuItems = [
     icon: 'cube-outline',
     component: 'Animation101Screen',
   },
+  {
+    name: 'Animation 102',
+    icon: 'albums-outline',
+    component: 'Animation102Screen',
+  },
 ];
 
-const Home = () => {
+const HomeScreen = () => {
+  const {top} = useSafeAreaInsets();
   const renderMenuItem = (menuItem: MenuItem) => (
     <View>
       <Text>
@@ -24,24 +33,37 @@ const Home = () => {
     </View>
   );
 
+  const renderListHeader = () => {
+    return (
+      <View style={{marginTop: top, marginBottom: 20}}>
+        <Text style={styles.title}>Home Screen</Text>
+      </View>
+    );
+  };
+
+  const itemSeparator = () => {
+    return (
+      <View
+        style={{
+          borderBottomWidth: 1,
+          opacity: 0.4,
+          marginVertical: 8,
+        }}
+      />
+    );
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={{flex: 1, ...styles.globalMargin}}>
       <FlatList
         data={menuItems}
         renderItem={({item}) => renderMenuItem(item)}
         keyExtractor={item => item.name}
+        ListHeaderComponent={renderListHeader}
+        ItemSeparatorComponent={itemSeparator}
       />
     </View>
   );
 };
 
-export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  text: {
-    fontSize: 30,
-  },
-});
+export default HomeScreen;
