@@ -4,6 +4,7 @@ import {StyleSheet, View} from 'react-native';
 
 export const Animation101Screen = () => {
   const opacity = useRef(new Animated.Value(0.4)).current;
+  const top = useRef(new Animated.Value(-200)).current;
 
   const fadeIn = () => {
     Animated.timing(opacity, {
@@ -21,9 +22,47 @@ export const Animation101Screen = () => {
     }).start();
   };
 
+  const centerBox = () => {
+    Animated.timing(top, {
+      toValue: 0,
+      duration: 250,
+      useNativeDriver: true,
+    }).start(jumpBox);
+  };
+
+  const jumpBox = () => {
+    Animated.timing(top, {
+      toValue: -100,
+      duration: 300,
+      useNativeDriver: true,
+    }).start(() =>
+      Animated.timing(top, {
+        toValue: 0,
+        duration: 350,
+        useNativeDriver: true,
+      }).start(),
+    );
+  };
+
+  const resetBox = () => {
+    Animated.timing(top, {
+      toValue: -200,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  };
+
   return (
     <View style={styles.container}>
-      <Animated.View style={{...styles.purpleBox, opacity}} />
+      <Animated.View
+        style={{...styles.purpleBox, opacity, transform: [{translateY: top}]}}
+      />
+      <TouchableOpacity onPress={centerBox}>
+        <Text>Center Box</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={resetBox}>
+        <Text>Reset Box</Text>
+      </TouchableOpacity>
       <TouchableOpacity onPress={fadeIn}>
         <Text>Show</Text>
       </TouchableOpacity>
@@ -41,6 +80,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   purpleBox: {
+    // top: -100,
     borderRadius: 10,
     backgroundColor: '#5856D6',
     width: 150,
