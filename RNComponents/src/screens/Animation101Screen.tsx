@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {Animated, Text, TouchableOpacity} from 'react-native';
+import {Animated, Easing, Text, TouchableOpacity} from 'react-native';
 import {StyleSheet, View} from 'react-native';
 
 export const Animation101Screen = () => {
@@ -27,21 +27,8 @@ export const Animation101Screen = () => {
       toValue: 0,
       duration: 250,
       useNativeDriver: true,
-    }).start(jumpBox);
-  };
-
-  const jumpBox = () => {
-    Animated.timing(top, {
-      toValue: -100,
-      duration: 300,
-      useNativeDriver: true,
-    }).start(() =>
-      Animated.timing(top, {
-        toValue: 0,
-        duration: 350,
-        useNativeDriver: true,
-      }).start(),
-    );
+      easing: Easing.bounce,
+    }).start();
   };
 
   const resetBox = () => {
