@@ -1,30 +1,29 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
   TextInput,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import {CustomSwitch} from '../components/CustomSwitch';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {useForm} from '../hooks/useForm';
 import {styles} from '../theme/appTheme';
 
 export const TextInputScreen = () => {
-  const [form, setForm] = useState({
+  const {form, onChange} = useForm({
     name: '',
     email: '',
     phone: '',
+    isSubscribed: false,
   });
 
-  const onInputChange = (value: string, field: string) => {
-    setForm({
-      ...form,
-      [field]: value,
-    });
-  };
+  const {name, email, phone, isSubscribed} = form;
 
   return (
     <KeyboardAvoidingView
@@ -35,31 +34,37 @@ export const TextInputScreen = () => {
           <View style={styles.globalMargin}>
             <HeaderTitle title="TextInputs" />
             <TextInput
-              value={form.name}
+              value={name}
               placeholder="Ingrese su nombre"
-              onChangeText={text => onInputChange(text, 'name')}
+              onChangeText={text => onChange(text, 'name')}
               style={screenStyles.textInput}
               autoCorrect={false}
               autoCapitalize="words"
             />
             <TextInput
-              value={form.email}
+              value={email}
               placeholder="Ingrese su email"
-              onChangeText={text => onInputChange(text, 'email')}
+              onChangeText={text => onChange(text, 'email')}
               style={screenStyles.textInput}
               autoCorrect={false}
               autoCapitalize="none"
               keyboardType="email-address"
             />
-            <HeaderTitle title={JSON.stringify(form, null, 3)} />
-            <HeaderTitle title={JSON.stringify(form, null, 3)} />
             <TextInput
-              value={form.phone}
+              value={phone}
               placeholder="Ingrese su telefono"
-              onChangeText={text => onInputChange(text, 'phone')}
+              onChangeText={text => onChange(text, 'phone')}
               style={{...screenStyles.textInput, marginBottom: 30}}
               keyboardType="phone-pad"
             />
+            <View style={styles.switchRow}>
+              <Text style={styles.switchText}>isHappy</Text>
+              <CustomSwitch
+                isOn={isSubscribed}
+                onChange={value => onChange(value, 'isSubscribed')}
+              />
+            </View>
+            <HeaderTitle title={JSON.stringify(form, null, 3)} />
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
@@ -78,5 +83,10 @@ const screenStyles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 10,
     marginVertical: 10,
+  },
+  switchContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
