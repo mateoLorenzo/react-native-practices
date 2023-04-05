@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../screens/Home';
+import HomeScreen from '../screens/HomeScreen';
 import {Animation101Screen} from '../screens/Animation101Screen';
 import {Animation102Screen} from '../screens/Animation102Screen';
 import {SwitchScreen} from '../screens/SwitchScreen';

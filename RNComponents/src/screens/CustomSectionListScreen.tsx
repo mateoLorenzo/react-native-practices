@@ -3,6 +3,7 @@
 import React from 'react';
 import {SectionList, Text, View} from 'react-native';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {ItemSeparator} from '../components/ItemSeparator';
 
 interface Casas {
   casa: string;
@@ -25,12 +26,20 @@ const casas: Casas[] = [
   },
 ];
 
+const footerComponent = () => (
+  <View style={{marginBottom: 70}}>
+    <HeaderTitle title={`Total de casas: ${casas.length}`} />
+  </View>
+);
+
 export const CustomSectionListScreen = () => {
   return (
     <View style={{padding: 20, flex: 1, backgroundColor: 'white'}}>
       <SectionList
         sections={casas}
         renderItem={({item}) => <Text>{item}</Text>}
+        ListHeaderComponent={<HeaderTitle title="Section List" />}
+        ListFooterComponent={footerComponent}
         keyExtractor={(item, index) => item + index}
         stickySectionHeadersEnabled
         renderSectionHeader={({section}) => (
@@ -38,6 +47,11 @@ export const CustomSectionListScreen = () => {
             <HeaderTitle title={section.casa} />
           </View>
         )}
+        renderSectionFooter={({section}) => (
+          <HeaderTitle title={`Total: ${section.data.length}`} />
+        )}
+        ItemSeparatorComponent={ItemSeparator}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
