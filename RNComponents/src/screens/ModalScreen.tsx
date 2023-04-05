@@ -1,56 +1,59 @@
 import React, {useState} from 'react';
-import {Button, Modal, StyleSheet, Text, View} from 'react-native';
-import {HeaderTitle} from '../components/HeaderTitle';
-import {styles} from '../theme/appTheme';
+import {
+  Button,
+  Modal,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 
 export const ModalScreen = () => {
   const [isVisible, setIsVisible] = useState(false);
 
+  const showModal = () => {
+    setIsVisible(true);
+  };
+
+  const hideModal = () => {
+    setIsVisible(false);
+  };
+
   return (
-    <View style={styles.globalMargin}>
-      <HeaderTitle title="Modal Screen" />
+    <View style={styles.screenContainer}>
+      <Button title="Open Modal" onPress={showModal} />
 
-      <Button
-        title="Open Modal"
-        onPress={() => {
-          setIsVisible(true);
-        }}
-      />
-
-      <Modal
-        animationType="fade"
-        visible={isVisible}
-        transparent
-        onRequestClose={() => {
-          setIsVisible(false);
-        }}>
-        <View style={screenStyles.modalContainer}>
-          <View style={screenStyles.modal}>
-            <HeaderTitle title="Modal Screen" />
-            <Text>Modal body</Text>
-            <Button
-              title="Close Modal"
-              onPress={() => {
-                setIsVisible(false);
-              }}
-            />
-          </View>
-        </View>
+      <Modal visible={isVisible} transparent animationType="fade">
+        <Pressable onPress={hideModal} style={styles.modalContainer}>
+          <TouchableWithoutFeedback>
+            <View style={styles.modalContent}>
+              <Text>Modal Title</Text>
+              <Button title="Close Modal" onPress={hideModal} />
+            </View>
+          </TouchableWithoutFeedback>
+        </Pressable>
       </Modal>
     </View>
   );
 };
 
-const screenStyles = StyleSheet.create({
+const styles = StyleSheet.create({
+  screenContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   modalContainer: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.3)',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  modal: {
+  modalContent: {
     backgroundColor: 'white',
     borderRadius: 10,
+    padding: 40,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
