@@ -71,6 +71,7 @@ export const SlidesScreen = () => {
   return (
     <SafeAreaView style={styles.screenContainer}>
       <Carousel
+        vertical={false}
         data={items}
         renderItem={({item}) => renderItem(item)}
         sliderWidth={screenWidth}
