@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
   Animated,
   Dimensions,
@@ -12,6 +12,7 @@ import {
 import {ImageSourcePropType, SafeAreaView, Text} from 'react-native';
 import Carousel, {Pagination} from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 import {useAnimation} from '../hooks/useAnimation';
 
 const {width: screenWidth} = Dimensions.get('window');
@@ -43,6 +44,8 @@ const items: Slide[] = [
 export const SlidesScreen = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const {opacity, fadeIn, fadeOut} = useAnimation();
+  const {theme} = useContext(ThemeContext);
+  const {colors} = theme;
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -57,8 +60,8 @@ export const SlidesScreen = () => {
   const renderItem = (item: Slide) => (
     <View style={styles.imageContainer}>
       <Image source={item.img} style={styles.sliderImage} />
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.subtitle}>{item.desc}</Text>
+      <Text style={{...styles.title, color: colors.text}}>{item.title}</Text>
+      <Text style={{...styles.subtitle, color: colors.text}}>{item.desc}</Text>
     </View>
   );
 
@@ -85,14 +88,14 @@ export const SlidesScreen = () => {
         <Pagination
           dotsLength={items.length}
           activeDotIndex={activeIndex}
-          dotStyle={styles.paginationDot}
+          dotStyle={{...styles.paginationDot, backgroundColor: colors.primary}}
         />
 
         <Animated.View style={{opacity}}>
           <TouchableOpacity
             activeOpacity={0.8}
             onPress={onPress}
-            style={styles.enterButton}>
+            style={{...styles.enterButton, backgroundColor: colors.primary}}>
             <Text style={styles.enterButtonText}>Entrar</Text>
             <Icon name="chevron-forward-outline" color="white" size={25} />
           </TouchableOpacity>
@@ -105,12 +108,10 @@ export const SlidesScreen = () => {
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: 'white',
     paddingTop: 50,
   },
   imageContainer: {
     flex: 1,
-    backgroundColor: 'white',
     borderRadius: 5,
     padding: 40,
     justifyContent: 'center',
@@ -123,7 +124,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#5856D6',
   },
   subtitle: {
     fontSize: 16,
@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 10,
-    backgroundColor: '#5856D6',
   },
   paginationContainer: {
     flexDirection: 'row',
@@ -142,7 +141,6 @@ const styles = StyleSheet.create({
   },
   enterButton: {
     flexDirection: 'row',
-    backgroundColor: '#5856D6',
     width: 150,
     height: 50,
     borderRadius: 10,

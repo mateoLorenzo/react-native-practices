@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Animated, Text, TouchableOpacity} from 'react-native';
 import {StyleSheet, View} from 'react-native';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 import {useAnimation} from '../hooks/useAnimation';
 
 export const Animation101Screen = () => {
   const {opacity, position, fadeIn, fadeOut, moveBox, resetBox} =
     useAnimation();
 
+  const {theme} = useContext(ThemeContext);
+  const {colors} = theme;
+
   return (
-    <View style={styles.container}>
+    <View style={{...styles.container, backgroundColor: colors.background}}>
       <Animated.View
         style={{
           ...styles.purpleBox,
@@ -17,16 +21,16 @@ export const Animation101Screen = () => {
         }}
       />
       <TouchableOpacity onPress={() => moveBox(-1000)}>
-        <Text>Center Box</Text>
+        <Text style={{color: colors.text}}>Center Box</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={resetBox}>
-        <Text>Reset Box</Text>
+        <Text style={{color: colors.text}}>Reset Box</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={fadeIn}>
-        <Text>Show</Text>
+        <Text style={{color: colors.text}}>Show</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={fadeOut}>
-        <Text>Hide</Text>
+        <Text style={{color: colors.text}}>Hide</Text>
       </TouchableOpacity>
     </View>
   );
@@ -34,7 +38,6 @@ export const Animation101Screen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
   },

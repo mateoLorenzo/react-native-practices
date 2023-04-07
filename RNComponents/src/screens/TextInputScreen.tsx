@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {CustomSwitch} from '../components/CustomSwitch';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 import {useForm} from '../hooks/useForm';
 import {styles} from '../theme/appTheme';
 
@@ -24,7 +25,8 @@ export const TextInputScreen = () => {
   });
 
   const {name, email, phone, isSubscribed} = form;
-
+  const {theme} = useContext(ThemeContext);
+  const {colors} = theme;
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -37,7 +39,10 @@ export const TextInputScreen = () => {
               value={name}
               placeholder="Ingrese su nombre"
               onChangeText={text => onChange(text, 'name')}
-              style={screenStyles.textInput}
+              style={{
+                ...screenStyles.textInput,
+                backgroundColor: colors.primary,
+              }}
               autoCorrect={false}
               autoCapitalize="words"
             />
@@ -45,7 +50,10 @@ export const TextInputScreen = () => {
               value={email}
               placeholder="Ingrese su email"
               onChangeText={text => onChange(text, 'email')}
-              style={screenStyles.textInput}
+              style={{
+                ...screenStyles.textInput,
+                backgroundColor: colors.primary,
+              }}
               autoCorrect={false}
               autoCapitalize="none"
               keyboardType="email-address"
@@ -54,11 +62,16 @@ export const TextInputScreen = () => {
               value={phone}
               placeholder="Ingrese su telefono"
               onChangeText={text => onChange(text, 'phone')}
-              style={{...screenStyles.textInput, marginBottom: 30}}
+              style={{
+                ...screenStyles.textInput,
+                backgroundColor: colors.primary,
+              }}
               keyboardType="phone-pad"
             />
             <View style={styles.switchRow}>
-              <Text style={styles.switchText}>isHappy</Text>
+              <Text style={{...styles.switchText, color: colors.text}}>
+                isHappy
+              </Text>
               <CustomSwitch
                 isOn={isSubscribed}
                 onChange={value => onChange(value, 'isSubscribed')}

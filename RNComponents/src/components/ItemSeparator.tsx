@@ -1,14 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {View, StyleSheet} from 'react-native';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 export const ItemSeparator = () => {
-  return <View style={styles.separator} />;
+  const {theme} = useContext(ThemeContext);
+  const {colors} = theme;
+  return (
+    <View style={{...styles.separator, borderBottomColor: colors.primary}} />
+  );
 };
 
 const styles = StyleSheet.create({
   separator: {
     borderBottomWidth: 1,
-    opacity: 0.4,
     marginVertical: 8,
   },
 });
