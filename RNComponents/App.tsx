@@ -12,7 +12,7 @@ import {
 const customTheme: Theme = {
   dark: true,
   colors: {
-    ...DarkTheme.colors, // <-- Switch between DarkTheme and DefaultTheme
+    ...DefaultTheme.colors, // <-- Switch between DarkTheme and DefaultTheme
     // primary: string,
     // background: string,
     // card: string,
