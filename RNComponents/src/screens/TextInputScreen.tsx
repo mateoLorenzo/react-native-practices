@@ -41,8 +41,10 @@ export const TextInputScreen = () => {
               onChangeText={text => onChange(text, 'name')}
               style={{
                 ...screenStyles.textInput,
-                backgroundColor: colors.primary,
+                color: colors.text,
+                borderColor: colors.text,
               }}
+              placeholderTextColor={colors.text}
               autoCorrect={false}
               autoCapitalize="words"
             />
@@ -52,22 +54,15 @@ export const TextInputScreen = () => {
               onChangeText={text => onChange(text, 'email')}
               style={{
                 ...screenStyles.textInput,
-                backgroundColor: colors.primary,
+                color: colors.text,
+                borderColor: colors.text,
               }}
+              placeholderTextColor={colors.text}
               autoCorrect={false}
               autoCapitalize="none"
               keyboardType="email-address"
             />
-            <TextInput
-              value={phone}
-              placeholder="Ingrese su telefono"
-              onChangeText={text => onChange(text, 'phone')}
-              style={{
-                ...screenStyles.textInput,
-                backgroundColor: colors.primary,
-              }}
-              keyboardType="phone-pad"
-            />
+
             <View style={styles.switchRow}>
               <Text style={{...styles.switchText, color: colors.text}}>
                 isHappy
@@ -78,6 +73,18 @@ export const TextInputScreen = () => {
               />
             </View>
             <HeaderTitle title={JSON.stringify(form, null, 3)} />
+            <TextInput
+              value={phone}
+              placeholder="Ingrese su telefono"
+              onChangeText={text => onChange(text, 'phone')}
+              style={{
+                ...screenStyles.textInput,
+                color: colors.text,
+                borderColor: colors.text,
+              }}
+              placeholderTextColor={colors.text}
+              keyboardType="phone-pad"
+            />
           </View>
         </TouchableWithoutFeedback>
       </ScrollView>
@@ -91,7 +98,6 @@ const screenStyles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    borderColor: 'rgba(0,0,0,0.3)',
     height: 50,
     paddingHorizontal: 10,
     borderRadius: 10,
