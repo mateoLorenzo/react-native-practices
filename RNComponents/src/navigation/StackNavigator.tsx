@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import {Animation101Screen} from '../screens/Animation101Screen';
@@ -13,13 +13,15 @@ import {InfiniteScrollScreen} from '../screens/InfiniteScrollScreen';
 import {SlidesScreen} from '../screens/SlidesScreen';
 import {ChangeThemeScreen} from '../screens/ChangeThemeScreen';
 import {NavigationContainer} from '@react-navigation/native';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 const Stack = createStackNavigator();
 // prettier-ignore
 
 export const StackNavigator = () => {
+  const {theme} = useContext(ThemeContext);
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
         <Stack.Screen name="Animation101Screen" component={Animation101Screen} />
