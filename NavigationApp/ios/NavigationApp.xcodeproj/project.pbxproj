@@ -41,7 +41,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-NavigationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationApp.release.xcconfig"; path = "Target Support Files/Pods-NavigationApp/Pods-NavigationApp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-NavigationApp-NavigationAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationApp-NavigationAppTests.debug.xcconfig"; path = "Target Support Files/Pods-NavigationApp-NavigationAppTests/Pods-NavigationApp-NavigationAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-NavigationApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NavigationApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		792F680629A1A55E005EB048 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		796B74282A3EAE3D0087F02B /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = NavigationApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-NavigationApp-NavigationAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NavigationApp-NavigationAppTests.release.xcconfig"; path = "Target Support Files/Pods-NavigationApp-NavigationAppTests/Pods-NavigationApp-NavigationAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -107,10 +107,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		792F680529A1A52A005EB048 /* Fonts */ = {
+		796B74272A3EAE0B0087F02B /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				792F680629A1A55E005EB048 /* Ionicons.ttf */,
+				796B74282A3EAE3D0087F02B /* Ionicons.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				792F680529A1A52A005EB048 /* Fonts */,
+				796B74272A3EAE0B0087F02B /* Fonts */,
 				13B07FAE1A68108700A75B9A /* NavigationApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* NavigationAppTests */,
@@ -502,6 +502,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -527,6 +528,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
