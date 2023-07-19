@@ -20,6 +20,7 @@ interface Props {
 
 export const PokemonCard = ({pokemon}: Props) => {
   const [bgColor, setBgColor] = useState('grey');
+  const isMounted = React.useRef(true);
 
   useEffect(() => {
     getColors(pokemon.picture, {
@@ -27,6 +28,10 @@ export const PokemonCard = ({pokemon}: Props) => {
       cache: true,
       key: pokemon.picture,
     }).then(colors => {
+      if (isMounted.current === false) {
+        return;
+      }
+
       if (colors.platform === 'android') {
         setBgColor(colors.dominant || 'grey');
       }
@@ -34,6 +39,9 @@ export const PokemonCard = ({pokemon}: Props) => {
         setBgColor(colors.background || 'grey');
       }
     });
+    return () => {
+      isMounted.current = false;
+    };
   }, []);
 
   return (
