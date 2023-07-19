@@ -3,15 +3,13 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
-  // Text,
   TouchableOpacity,
 } from 'react-native';
 import {styles} from '../theme/appTheme';
-// import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {usePokemonPaginated} from '../hooks/usePokemonPaginated';
+import {FadeInImage} from '../components/FadeInImage';
 
 export const HomeScreen = () => {
-  // const {top} = useSafeAreaInsets();
   const {simplePokemonList, loadPokemons} = usePokemonPaginated();
 
   return (
@@ -28,10 +26,7 @@ export const HomeScreen = () => {
         showsVerticalScrollIndicator={false}
         renderItem={({item}) => (
           <TouchableOpacity>
-            <Image
-              source={{uri: item.picture}}
-              style={{height: 100, width: 100}}
-            />
+            <FadeInImage uri={item.picture} style={{height: 100, width: 100}} />
           </TouchableOpacity>
         )}
         //infinite scroll
@@ -39,11 +34,6 @@ export const HomeScreen = () => {
         onEndReachedThreshold={0.4}
         ListFooterComponent={<ActivityIndicator />}
       />
-
-      {/* <Text
-        style={{...styles.title, ...styles.globalMargin, marginTop: top + 20}}>
-        Pokedex
-      </Text> */}
     </>
   );
 };
