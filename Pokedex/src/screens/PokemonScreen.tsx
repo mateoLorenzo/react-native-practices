@@ -13,6 +13,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {RootStackParams} from '../navigators/StackNavigator';
 import {FadeInImage} from '../components/FadeInImage';
 import {usePokemon} from '../hooks/usePokemon';
+import {PokemonDetails} from '../components/PokemonDetails';
 
 interface Props extends StackScreenProps<RootStackParams, 'PokemonScreen'> {}
 
@@ -46,13 +47,17 @@ export const PokemonScreen = ({route, navigation}: Props) => {
         />
         <FadeInImage uri={picture} style={styles.pokemonImage} />
       </View>
-      <View style={styles.loadingIndicator}>
-        <ActivityIndicator
-          color={color}
-          size={50}
-          // animating={isLoading} //Cool way to show the loading indicator
-        />
-      </View>
+      {isLoading ? (
+        <View style={styles.loadingIndicator}>
+          <ActivityIndicator
+            color={color}
+            size={50}
+            // animating={isLoading} //Cool way to show the loading indicator
+          />
+        </View>
+      ) : (
+        <PokemonDetails pokemon={pokemon} />
+      )}
     </View>
   );
 };
