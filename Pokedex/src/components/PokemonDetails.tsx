@@ -12,7 +12,7 @@ export const PokemonDetails = ({pokemon}: Props) => {
     <ScrollView
       style={styles.screenContainer}
       showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
+      <View style={styles.typesSectionContainer}>
         <Text style={styles.title}>Types</Text>
         <View style={styles.typesContainer}>
           {pokemon.types.map(({type}) => (
@@ -69,6 +69,24 @@ export const PokemonDetails = ({pokemon}: Props) => {
           ))}
         </View>
       </View>
+      <View style={styles.container}>
+        <Text style={styles.title}>Stats</Text>
+        <View>
+          {pokemon.stats.map((stat, i) => (
+            <View key={`${stat.stat.name} - ${i}`} style={styles.statContainer}>
+              <Text style={styles.statName}>{stat.stat.name}</Text>
+              <Text style={styles.statText}>{stat.base_stat}</Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={styles.finalSprite}>
+          <FadeInImage
+            uri={pokemon.sprites.front_default}
+            style={styles.basicSprite}
+          />
+        </View>
+      </View>
     </ScrollView>
   );
 };
@@ -76,7 +94,10 @@ export const PokemonDetails = ({pokemon}: Props) => {
 const styles = StyleSheet.create({
   screenContainer: {
     ...StyleSheet.absoluteFillObject,
+  },
+  typesSectionContainer: {
     marginTop: 370,
+    marginHorizontal: 20,
   },
   container: {
     marginHorizontal: 20,
@@ -104,5 +125,21 @@ const styles = StyleSheet.create({
   movesContainer: {
     flexWrap: 'wrap',
     flexDirection: 'row',
+  },
+  statContainer: {
+    flexDirection: 'row',
+  },
+  statName: {
+    fontSize: 19,
+    marginRight: 10,
+    width: 150,
+  },
+  statText: {
+    fontSize: 19,
+    fontWeight: 'bold',
+  },
+  finalSprite: {
+    marginBottom: 20,
+    alignItems: 'center',
   },
 });
