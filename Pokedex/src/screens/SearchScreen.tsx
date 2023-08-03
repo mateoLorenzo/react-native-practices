@@ -1,32 +1,17 @@
 import React from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import {FlatList, Platform, StyleSheet, Text, View} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {SearchInput} from '../components/SearchInput';
 import {usePokemonSearch} from '../hooks/usePokemonSearch';
 import {PokemonCard} from '../components/PokemonCard';
+import {Loading} from '../components/Loading';
 
 export const SearchScreen = () => {
   const {isFetching, simplePokemonList} = usePokemonSearch();
   const {top} = useSafeAreaInsets();
 
   if (isFetching) {
-    return (
-      <View style={styles.activityContainer}>
-        <ActivityIndicator
-          color="grey"
-          size={30}
-          style={styles.activityIndicator}
-        />
-        <Text style={styles.loadingText}>Cargando...</Text>
-      </View>
-    );
+    return <Loading />;
   }
 
   return (
@@ -35,7 +20,12 @@ export const SearchScreen = () => {
         ...styles.screenContainer,
         marginTop: Platform.OS === 'ios' ? top : top + 10,
       }}>
-      <SearchInput />
+      <SearchInput
+        style={{
+          ...styles.searchInputStyles,
+          top: Platform.OS === 'ios' ? top / 2 : top + 10,
+        }}
+      />
 
       <FlatList
         data={simplePokemonList}
@@ -47,8 +37,7 @@ export const SearchScreen = () => {
           <Text
             style={{
               ...styles.cardsContainer,
-              top: top,
-              marginBottom: top + 20,
+              marginTop: Platform.OS === 'ios' ? top + 40 : top + 80,
             }}>
             Pokedex
           </Text>
@@ -62,6 +51,11 @@ const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
     marginHorizontal: 20,
+  },
+  searchInputStyles: {
+    position: 'absolute',
+    zIndex: 999,
+    width: '100%',
   },
   cardsContainer: {
     fontSize: 35,
@@ -80,6 +74,4 @@ const styles = StyleSheet.create({
   loadingText: {
     marginTop: 10,
   },
-  title: {},
-  globalMargin: {},
 });
