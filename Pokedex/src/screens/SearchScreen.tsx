@@ -11,19 +11,37 @@ import {SimplePokemon} from '../interfaces/pokemonInterfaces';
 export const SearchScreen = () => {
   const {isFetching, simplePokemonList} = usePokemonSearch();
   const {top} = useSafeAreaInsets();
-  const [term, setTerm] = useState('');
-  const [pokemonsFiltered, setPokemonsFiltered] = useState<SimplePokemon[]>([]);
+  const [searchValue, setSearchValue] = useState('');
+  const [pokemonsToRender, setPokemonsToRender] = useState<SimplePokemon[]>([]);
+
+  const getPokemonsByName = (name: string): SimplePokemon[] => {
+    const pokemonsList = simplePokemonList.filter(poke =>
+      poke.name.toLowerCase().includes(name.toLowerCase()),
+    );
+    return pokemonsList;
+  };
+
+  const getPokemonById = (id: string): SimplePokemon[] => {
+    const pokemonById = simplePokemonList.find(poke => poke.id === id);
+    return pokemonById ? [pokemonById] : [];
+  };
 
   useEffect(() => {
-    if (term.trim().length === 0) {
-      return setPokemonsFiltered(simplePokemonList);
+    if (searchValue.trim().length === 0) {
+      return setPokemonsToRender(simplePokemonList);
     }
 
-    const pokemonsList = simplePokemonList.filter(poke =>
-      poke.name.toLowerCase().includes(term.toLowerCase()),
-    );
-    setPokemonsFiltered(pokemonsList);
-  }, [term]);
+    let pokemonsFiltered: SimplePokemon[] = [];
+    if (isNaN(Number(searchValue))) {
+      pokemonsFiltered = getPokemonsByName(searchValue);
+    } else {
+      pokemonsFiltered = getPokemonById(searchValue);
+    }
+
+    return pokemonsFiltered.length > 0
+      ? setPokemonsToRender(pokemonsFiltered)
+      : setPokemonsToRender(simplePokemonList);
+  }, [searchValue, isFetching]);
 
   if (isFetching) {
     return <Loading />;
@@ -36,7 +54,7 @@ export const SearchScreen = () => {
         marginTop: Platform.OS === 'ios' ? top : top + 10,
       }}>
       <SearchInput
-        onDebounce={value => setTerm(value)}
+        onDebounce={value => setSearchValue(value)}
         style={{
           ...styles.searchInputStyles,
           top: Platform.OS === 'ios' ? top / 2 : top + 10,
@@ -44,7 +62,7 @@ export const SearchScreen = () => {
       />
 
       <FlatList
-        data={pokemonsFiltered}
+        data={pokemonsToRender}
         keyExtractor={pokemon => pokemon.id}
         showsVerticalScrollIndicator={false}
         numColumns={2}
@@ -55,7 +73,7 @@ export const SearchScreen = () => {
               ...styles.cardsContainer,
               marginTop: Platform.OS === 'ios' ? top + 40 : top + 80,
             }}>
-            {term}
+            {searchValue}
           </Text>
         }
       />
