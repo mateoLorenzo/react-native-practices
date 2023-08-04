@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useState} from 'react';
 import {
   StyleSheet,
@@ -11,16 +12,17 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useDebouncedValue} from '../hooks/useDebouncedValue';
 
 interface Props {
+  onDebounce: (value: string) => void;
   style?: StyleProp<ViewStyle>;
 }
 
-export const SearchInput = ({style}: Props) => {
+export const SearchInput = ({style, onDebounce}: Props) => {
   const [textValue, setTextValue] = useState('');
 
   const debouncedValue = useDebouncedValue(textValue);
 
   useEffect(() => {
-    console.log('debouncedValue xd', debouncedValue);
+    onDebounce(debouncedValue);
   }, [debouncedValue]);
 
   return (
