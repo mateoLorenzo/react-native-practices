@@ -1,5 +1,12 @@
 import React from 'react';
-import {ActivityIndicator, FlatList, Image, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {styles} from '../theme/appTheme';
 import {usePokemonPaginated} from '../hooks/usePokemonPaginated';
 import {PokemonCard} from '../components/PokemonCard';
@@ -16,7 +23,7 @@ export const HomeScreen = () => {
         style={styles.pokebolaBG}
       />
 
-      <View style={{alignItems: 'center'}}>
+      <View style={screenStyles.screenContainer}>
         <FlatList
           data={simplePokemonList}
           keyExtractor={pokemon => pokemon.id}
@@ -29,9 +36,9 @@ export const HomeScreen = () => {
               style={{
                 ...styles.title,
                 ...styles.globalMargin,
+                ...screenStyles.title,
                 top: top,
                 marginBottom: top + 20,
-                paddingBottom: 10,
               }}>
               Pokedex
             </Text>
@@ -39,9 +46,23 @@ export const HomeScreen = () => {
           //infinite scroll
           onEndReached={loadPokemons}
           onEndReachedThreshold={0.4}
-          ListFooterComponent={<ActivityIndicator />}
+          ListFooterComponent={
+            <ActivityIndicator style={screenStyles.loader} />
+          }
         />
       </View>
     </>
   );
 };
+
+const screenStyles = StyleSheet.create({
+  screenContainer: {
+    alignItems: 'center',
+  },
+  title: {
+    paddingBottom: 10,
+  },
+  loader: {
+    marginBottom: 100,
+  },
+});
