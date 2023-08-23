@@ -56,4 +56,9 @@ export const menuItems: MenuItem[] = [
     icon: 'flask-outline',
     component: 'ChangeThemeScreen',
   },
+  {
+    name: 'Services (pets)',
+    icon: 'globe-outline',
+    component: 'ServicesScreen',
+  },
 ];
