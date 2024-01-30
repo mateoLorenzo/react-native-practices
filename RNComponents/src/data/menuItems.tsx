@@ -61,4 +61,9 @@ export const menuItems: MenuItem[] = [
     icon: 'globe-outline',
     component: 'ServicesScreen',
   },
+  {
+    name: 'Width Animation',
+    icon: 'cube-outline',
+    component: 'WidthAnimationScreen',
+  },
 ];
