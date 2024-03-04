@@ -16,6 +16,7 @@ import {ChangeThemeScreen} from '../screens/ChangeThemeScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {ThemeContext} from '../context/themeContext/ThemeContext';
 import {View} from 'react-native';
+import {CustomImageScreen} from '../screens/CustomImageScreen';
 
 const Stack = createStackNavigator();
 // prettier-ignore
@@ -39,6 +40,7 @@ export const StackNavigator = () => {
           <Stack.Screen name="InfiniteScrollScreen" component={InfiniteScrollScreen} />
           <Stack.Screen name="SlidesScreen" component={SlidesScreen} />
           <Stack.Screen name="ChangeThemeScreen" component={ChangeThemeScreen} />
+          <Stack.Screen name="CustomImageScreen" component={CustomImageScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
