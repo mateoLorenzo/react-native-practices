@@ -66,4 +66,9 @@ export const menuItems: MenuItem[] = [
     icon: 'cube-outline',
     component: 'WidthAnimationScreen',
   },
+  {
+    name: 'Custom Image',
+    icon: 'image-outline',
+    component: 'CustomImageScreen',
+  },
 ];

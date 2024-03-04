@@ -18,6 +18,7 @@ import {ThemeContext} from '../context/themeContext/ThemeContext';
 import {View} from 'react-native';
 import {ServicesScreen} from '../screens/ServicesScreen';
 import {WidthAnimationScreen} from '../screens/WidthAnimationScreen';
+import {CustomImageScreen} from '../screens/CustomImageScreen';
 
 const Stack = createStackNavigator();
 // prettier-ignore
@@ -43,6 +44,7 @@ export const StackNavigator = () => {
           <Stack.Screen name="ChangeThemeScreen" component={ChangeThemeScreen} />
           <Stack.Screen name="ServicesScreen" component={ServicesScreen} />
           <Stack.Screen name="WidthAnimationScreen" component={WidthAnimationScreen} />
+          <Stack.Screen name="CustomImageScreen" component={CustomImageScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>
