@@ -56,4 +56,9 @@ export const menuItems: MenuItem[] = [
     icon: 'flask-outline',
     component: 'ChangeThemeScreen',
   },
+  {
+    name: 'Custom Image',
+    icon: 'image-outline',
+    component: 'CustomImageScreen',
+  },
 ];
