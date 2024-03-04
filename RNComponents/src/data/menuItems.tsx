@@ -3,72 +3,72 @@ import {MenuItem} from '../interfaces';
 export const menuItems: MenuItem[] = [
   {
     name: 'Animation 101',
-    icon: 'cube-outline',
+    icon: 'cube',
     component: 'Animation101Screen',
   },
   {
     name: 'Animation 102',
-    icon: 'albums-outline',
+    icon: 'albums',
     component: 'Animation102Screen',
   },
   {
     name: 'Switches',
-    icon: 'toggle-outline',
+    icon: 'toggle',
     component: 'SwitchScreen',
   },
   {
     name: 'Alerts',
-    icon: 'alert-circle-outline',
+    icon: 'alert-circle',
     component: 'AlertScreen',
   },
   {
     name: 'Text Inputs',
-    icon: 'document-text-outline',
+    icon: 'document-text',
     component: 'TextInputScreen',
   },
   {
     name: 'Pull to Refresh',
-    icon: 'refresh-outline',
+    icon: 'refresh',
     component: 'PullToRefreshScreen',
   },
   {
     name: 'Section List',
-    icon: 'list-outline',
+    icon: 'list',
     component: 'CustomSectionListScreen',
   },
   {
     name: 'Modal',
-    icon: 'copy-outline',
+    icon: 'copy',
     component: 'ModalScreen',
   },
   {
     name: 'Infinite Scroll',
-    icon: 'download-outline',
+    icon: 'download',
     component: 'InfiniteScrollScreen',
   },
   {
     name: 'Slides',
-    icon: 'volume-high-outline',
+    icon: 'volume-high',
     component: 'SlidesScreen',
   },
   {
     name: 'Change Theme',
-    icon: 'flask-outline',
+    icon: 'flask',
     component: 'ChangeThemeScreen',
   },
   {
     name: 'Services (pets)',
-    icon: 'globe-outline',
+    icon: 'globe',
     component: 'ServicesScreen',
   },
   {
     name: 'Width Animation',
-    icon: 'cube-outline',
+    icon: 'phone-landscape',
     component: 'WidthAnimationScreen',
   },
   {
     name: 'Custom Image',
-    icon: 'image-outline',
+    icon: 'image',
     component: 'CustomImageScreen',
   },
 ];
